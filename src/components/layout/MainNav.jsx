@@ -60,23 +60,22 @@ const MainNav = () => {
             />
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:block">
             <NavigationMenu>
-              <NavigationMenuList className="gap-2">
+              <NavigationMenuList className="gap-4">
                 {menuItems.map((item) =>
                   item.items ? (
                     <NavigationMenuItem key={item.title}>
-                      <NavigationMenuTrigger className="h-10 px-4 py-2">
+                      <NavigationMenuTrigger className="h-12 px-5 text-base font-medium">
                         {item.title}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
-                        <ul className="grid w-[200px] gap-2 p-4">
+                        <ul className="grid w-[240px] gap-3 p-6">
                           {item.items.map((subItem) => (
                             <li key={subItem.href}>
                               <Link
                                 href={subItem.href}
-                                className={navigationMenuTriggerStyle() + " h-10 px-4 py-2"}
+                                className={`${navigationMenuTriggerStyle()} h-12 px-5 text-base font-medium hover:bg-blue-50 hover:text-blue-700 rounded-lg`}
                               >
                                 {subItem.label}
                               </Link>
@@ -89,7 +88,7 @@ const MainNav = () => {
                     <NavigationMenuItem key={item.title}>
                       <Link
                         href={item.href}
-                        className={navigationMenuTriggerStyle() + " h-10 px-4 py-2"}
+                        className={`${navigationMenuTriggerStyle()} h-12 px-5 text-base font-medium`}
                       >
                         {item.title}
                       </Link>
@@ -100,7 +99,6 @@ const MainNav = () => {
             </NavigationMenu>
           </div>
 
-          {/* Mobile Navigation */}
           <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
@@ -130,14 +128,14 @@ const MainNav = () => {
                 <div className="px-6 py-4">
                   {menuItems.map((item) => (
                     <div key={item.title} className="py-2">
-                      <h3 className="text-sm font-medium text-gray-500 mb-2">{item.title}</h3>
+                      <h3 className="text-base font-medium text-gray-500 mb-2">{item.title}</h3>
                       <div className="space-y-1">
                         {item.items ? (
                           item.items.map((subItem) => (
                             <Link
                               key={subItem.href}
                               href={subItem.href}
-                              className="block px-3 py-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 transition-colors"
+                              className="block px-3 py-2 text-lg font-medium text-gray-900 rounded-lg hover:bg-gray-100 transition-colors"
                               onClick={() => setIsOpen(false)}
                             >
                               {subItem.label}
@@ -146,7 +144,7 @@ const MainNav = () => {
                         ) : (
                           <Link
                             href={item.href}
-                            className="block px-3 py-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 transition-colors"
+                            className="block px-3 py-2 text-lg font-medium text-gray-900 rounded-lg hover:bg-gray-100 transition-colors"
                             onClick={() => setIsOpen(false)}
                           >
                             {item.title}

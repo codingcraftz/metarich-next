@@ -1,51 +1,24 @@
 "use client";
 
-import { motion, useScroll, useTransform, useAnimate } from "framer-motion";
+import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useEffect } from "react";
 
 export default function Home() {
-  const { scrollY } = useScroll();
-  const [scope, animate] = useAnimate();
-
-  // 배경 그라데이션 애니메이션
-  const backgroundY = useTransform(scrollY, [0, 300], ["0%", "50%"]);
-  const backgroundOpacity = useTransform(scrollY, [0, 300], [0.05, 0.15]);
-
-  // 부드러운 호버 애니메이션
-  const pulseAnimation = {
-    scale: [1, 1.02, 1],
-    transition: {
-      duration: 4,
-      repeat: Infinity,
-      ease: "easeInOut",
-    },
-  };
-
-  // 텍스트 색상 변화 애니메이션
-  useEffect(() => {
-    const animation = async () => {
-      while (true) {
-        await animate(
-          "h1",
-          { color: ["#1e40af", "#2563eb", "#1e40af"] },
-          { duration: 5, ease: "easeInOut" }
-        );
-      }
-    };
-    animation();
-  }, [animate]);
-
   return (
-    <div className="flex flex-col items-center" ref={scope}>
+    <div className="flex flex-col items-center">
       {/* Hero Section */}
       <section className="w-full min-h-[90vh] flex items-center justify-center bg-white relative overflow-hidden">
-        {/* Animated background */}
+        {/* Curved background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-white via-blue-50 to-blue-100" />
           <motion.div
-            style={{ y: backgroundY, opacity: backgroundOpacity }}
-            className="absolute right-0 top-0 w-3/4 h-full bg-[url('/pattern.png')]"
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="absolute right-0 top-0 w-3/4 h-full bg-[url('/pattern.png')] opacity-5"
+            style={{
+              clipPath: "ellipse(70% 100% at 70% 0%)",
+            }}
           />
         </div>
 
@@ -61,26 +34,15 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-12 sm:mb-20"
           >
-            <motion.h1
-              animate={pulseAnimation}
-              className="text-[3.5rem] sm:text-[5rem] md:text-[8rem] font-bold tracking-tight leading-none"
-            >
+            <h1 className="text-[3.5rem] sm:text-[5rem] md:text-[8rem] font-bold tracking-tight leading-none text-blue-800">
               NEXT
-            </motion.h1>
-            <motion.h1
-              animate={pulseAnimation}
-              transition={{ delay: 0.2 }}
-              className="text-[3rem] sm:text-[4rem] md:text-[7rem] font-bold tracking-tight leading-none"
-            >
+            </h1>
+            <h1 className="text-[3rem] sm:text-[4rem] md:text-[7rem] font-bold tracking-tight leading-none text-blue-900">
               Boot
-            </motion.h1>
-            <motion.h1
-              animate={pulseAnimation}
-              transition={{ delay: 0.4 }}
-              className="text-[3.2rem] sm:text-[4.5rem] md:text-[7.5rem] font-bold tracking-tight leading-none"
-            >
+            </h1>
+            <h1 className="text-[3.2rem] sm:text-[4.5rem] md:text-[7.5rem] font-bold tracking-tight leading-none text-blue-950">
               Camp
-            </motion.h1>
+            </h1>
           </motion.div>
 
           <motion.p
@@ -97,9 +59,8 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.8 }}
-            whileHover={{ scale: 1.02 }}
           >
-            <Card className="bg-white/80 backdrop-blur border-none shadow-lg transition-all duration-300 hover:shadow-xl">
+            <Card className="bg-white/80 backdrop-blur border-none shadow-lg">
               <CardHeader>
                 <CardTitle className="text-xl sm:text-2xl md:text-3xl text-blue-900 mb-3 sm:mb-4">
                   GI - Generation Integration (세대통합) 프로젝트
@@ -156,10 +117,9 @@ export default function Home() {
               key={item.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="group relative overflow-hidden rounded-2xl"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
               <div className="relative p-6 md:p-8 h-full flex flex-col">
