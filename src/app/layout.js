@@ -1,32 +1,64 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import MainNav from "@/components/layout/MainNav";
+import { MainNav } from "@/components/layout/MainNav";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "NEXT 부트캠프",
-  description: "NEXT 부트캠프 - 미래를 선도하는 개발자 양성 프로그램",
+  title: "NEXT 부트캠프 | 메타리치",
+  description:
+    "세대와 세대를 잇다, 보험의 미래를 잇다. 메타리치의 미래형 성장 플랫폼, NEXT 부트캠프에서 보험영업의 전문가로 성장하세요.",
+  metadataBase: new URL("https://metarich.co.kr"),
+  openGraph: {
+    title: "NEXT 부트캠프 | 메타리치",
+    description: "세대와 세대를 잇다, 보험의 미래를 잇다. 메타리치의 미래형 성장 플랫폼",
+    url: "https://metarich.co.kr",
+    siteName: "NEXT 부트캠프",
+    images: [
+      {
+        url: "/og-image.png", // OG 이미지는 public 폴더에 추가 필요
+        width: 1200,
+        height: 630,
+        alt: "NEXT 부트캠프 - 메타리치의 미래형 성장 플랫폼",
+      },
+    ],
+    locale: "ko_KR",
+    type: "website",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  manifest: "/site.webmanifest",
+  twitter: {
+    card: "summary_large_image",
+    title: "NEXT 부트캠프 | 메타리치",
+    description: "세대와 세대를 잇다, 보험의 미래를 잇다. 메타리치의 미래형 성장 플랫폼",
+    images: ["/og-image.png"],
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}>
+    <html lang="ko">
+      <body className={inter.className}>
         <header className="border-b">
-          <div className="container mx-auto py-4">
-            <MainNav />
-          </div>
+          <MainNav />
         </header>
-        <main className="container mx-auto py-8">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );
