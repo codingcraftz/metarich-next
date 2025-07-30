@@ -43,7 +43,7 @@ export function FileUploadSection() {
         if (file) {
           // File 객체에 preview URL 추가
           Object.assign(file, {
-            preview: URL.createObjectURL(file)
+            preview: URL.createObjectURL(file),
           });
           setValue(name, file);
         }
@@ -60,7 +60,7 @@ export function FileUploadSection() {
       multiple: false,
       onDropRejected: () => {
         alert("PDF 파일만 업로드 가능합니다.");
-      }
+      },
     });
 
     const removeFile = (e) => {
@@ -77,7 +77,9 @@ export function FileUploadSection() {
         <div
           {...getRootProps()}
           className={`relative border-2 border-dashed rounded-lg p-4 transition-colors duration-200 ease-in-out cursor-pointer
-            ${isDragActive ? "border-blue-500 bg-blue-50" : "border-gray-300 hover:border-blue-400"}`}
+            ${
+              isDragActive ? "border-blue-500 bg-blue-50" : "border-gray-300 hover:border-blue-400"
+            }`}
         >
           <input {...getInputProps()} />
 
@@ -85,9 +87,7 @@ export function FileUploadSection() {
             <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
               <div className="flex items-center gap-2">
                 <File className="w-4 h-4" />
-                <span className="text-sm truncate max-w-[200px]">
-                  {currentFile.name}
-                </span>
+                <span className="text-sm truncate max-w-[200px]">{currentFile.name}</span>
               </div>
               <button
                 type="button"

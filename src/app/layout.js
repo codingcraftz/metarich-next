@@ -26,10 +26,8 @@ export const metadata = {
     type: "website",
   },
   icons: {
-    icon: [
-      { url: "/metarich.png" }, // 기본 favicon으로 metarich.png 사용
-    ],
-    apple: [{ url: "/metarich.png" }], // Apple 기기용 아이콘도 동일하게 사용
+    icon: [{ url: "/metarich.png" }],
+    apple: [{ url: "/metarich.png" }],
   },
   manifest: "/site.webmanifest",
   twitter: {
@@ -53,10 +51,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className={inter.className}>
-        <header className="border-b">
-          <MainNav />
-        </header>
-        <main>{children}</main>
+        <MainNav />
+        <main className="pt-20 md:pt-24">{children}</main>
       </body>
     </html>
   );

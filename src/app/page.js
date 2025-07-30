@@ -100,17 +100,17 @@ export default function Home() {
             {
               title: "NEXT",
               desc: "다음 세대를 위한 혁신적인 보험 플랫폼",
-              color: "from-blue-500 to-blue-600",
+              gradient: "from-[#2B4C8C] to-[#1E3A8A]",
             },
             {
               title: "GENERATION",
               desc: "세대를 아우르는 포용적인 성장",
-              color: "from-blue-600 to-blue-700",
+              gradient: "from-[#1E40AF] to-[#1E3A8A]",
             },
             {
               title: "INTEGRATION",
               desc: "전통과 혁신의 조화로운 통합",
-              color: "from-blue-700 to-blue-800",
+              gradient: "from-[#1E3A8A] to-[#172554]",
             },
           ].map((item, index) => (
             <motion.div
@@ -119,22 +119,13 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               viewport={{ once: true }}
+              className="group relative overflow-hidden rounded-2xl"
             >
-              <Card className="h-full overflow-hidden relative group">
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-                />
-                <CardHeader className="relative z-10">
-                  <CardTitle className="text-xl sm:text-2xl md:text-3xl font-bold group-hover:text-white transition-colors duration-300">
-                    {item.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="relative z-10">
-                  <p className="text-sm sm:text-base group-hover:text-white/90 transition-colors duration-300">
-                    {item.desc}
-                  </p>
-                </CardContent>
-              </Card>
+              <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
+              <div className="relative p-6 md:p-8 h-full flex flex-col">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{item.title}</h3>
+                <p className="text-base md:text-lg text-blue-100">{item.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>
