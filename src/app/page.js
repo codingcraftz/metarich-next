@@ -1,103 +1,144 @@
-import Image from "next/image";
+"use client";
+
+import { motion } from "framer-motion";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="flex flex-col items-center">
+      {/* Hero Section */}
+      <section className="w-full min-h-[90vh] flex items-center justify-center bg-white relative overflow-hidden">
+        {/* Curved background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-white via-blue-50 to-blue-100" />
+          <motion.div
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="absolute right-0 top-0 w-3/4 h-full bg-[url('/pattern.png')] opacity-5"
+            style={{
+              clipPath: "ellipse(70% 100% at 70% 0%)",
+            }}
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="container mx-auto text-center relative z-10 px-4 sm:px-6"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-12 sm:mb-20"
+          >
+            <h1 className="text-[3.5rem] sm:text-[5rem] md:text-[8rem] font-bold tracking-tight leading-none text-blue-800">
+              NEXT
+            </h1>
+            <h1 className="text-[3rem] sm:text-[4rem] md:text-[7rem] font-bold tracking-tight leading-none text-blue-900">
+              Boot
+            </h1>
+            <h1 className="text-[3.2rem] sm:text-[4.5rem] md:text-[7.5rem] font-bold tracking-tight leading-none text-blue-950">
+              Camp
+            </h1>
+          </motion.div>
+
+          <motion.p
+            className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-gray-700"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            세대와 세대를 잇다, 보험의 미래를 잇다.
+          </motion.p>
+
+          <motion.div
+            className="max-w-3xl mx-auto px-4 sm:px-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+          >
+            <Card className="bg-white/80 backdrop-blur border-none shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-xl sm:text-2xl md:text-3xl text-blue-900 mb-3 sm:mb-4">
+                  GI - Generation Integration (세대통합) 프로젝트
+                </CardTitle>
+                <CardDescription className="text-base sm:text-lg md:text-xl text-gray-700">
+                  모든 세대를 아우르는 진짜 핵심인재 양성 과정
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="text-gray-600">
+                <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                  넥스트 부트캠프는 보험의 '지금'과 '다음 세대'를 연결하는
+                  <br className="hidden sm:block" />
+                  GA의 길, 메타리치의 미래형 성장 플랫폼입니다.
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Core Values */}
+      <section className="container mx-auto py-12 sm:py-20 px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-10 sm:mb-16"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-blue-900 tracking-tight">
+            NEXT·GENERATION·INTEGRATION
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          {[
+            {
+              title: "NEXT",
+              desc: "다음 세대를 위한 혁신적인 보험 플랫폼",
+              color: "from-blue-500 to-blue-600",
+            },
+            {
+              title: "GENERATION",
+              desc: "세대를 아우르는 포용적인 성장",
+              color: "from-blue-600 to-blue-700",
+            },
+            {
+              title: "INTEGRATION",
+              desc: "전통과 혁신의 조화로운 통합",
+              color: "from-blue-700 to-blue-800",
+            },
+          ].map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full overflow-hidden relative group">
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                />
+                <CardHeader className="relative z-10">
+                  <CardTitle className="text-xl sm:text-2xl md:text-3xl font-bold group-hover:text-white transition-colors duration-300">
+                    {item.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="relative z-10">
+                  <p className="text-sm sm:text-base group-hover:text-white/90 transition-colors duration-300">
+                    {item.desc}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

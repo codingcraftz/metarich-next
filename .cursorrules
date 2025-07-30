@@ -1,0 +1,16 @@
+### 기술스택
+- 패키지매니저 pnpm
+- 백앤드: SUPABASE 사용
+- next.js - app라우터 방식을 사용
+- Typescript 사용안함 
+- 컴포넌트는 '*.jsx'로 만들어주세요.
+- style: tailwindcss 사용해주세요.
+- 아이콘은 Lucide React 사용해주세요.
+
+### ShadCn components
+- 모든 UI컴포넌트는 ShadCn사용 
+- 컴포넌트 사용전 설치여부 확인해주세요 path: '@/components/ui'
+- 컴포넌트 설치 명령어 사용 'pnpm dlx shadcn@latest add [component-name]'
+
+### 그 외
+- 여러곳에서 사용될법한 컴포넌트는 재사용가능하도록 설계
