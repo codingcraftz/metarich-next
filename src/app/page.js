@@ -71,7 +71,7 @@ export default function Home() {
               </CardHeader>
               <CardContent className="text-gray-600">
                 <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-                  넥스트 부트캠프는 보험의 '지금'과 '다음 세대'를 연결하는
+                  넥스트 부트캠프는 보험의 &apos;지금&apos;과 &apos;다음 세대&apos;를 연결하는
                   <br className="hidden sm:block" />
                   GA의 길, 메타리치의 미래형 성장 플랫폼입니다.
                 </p>
