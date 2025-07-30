@@ -30,14 +30,14 @@ const DaySchedule = ({ day }) => {
       className="mb-6 md:mb-8"
     >
       <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow duration-300">
-        <div className="bg-gradient-to-r from-blue-500/90 to-blue-600/90 p-4 md:p-6 text-white">
+        <div className="bg-gradient-to-r from-blue-500/90 to-blue-600/90 p-4 md:p-8 text-white">
           <div className="flex items-center gap-2 md:gap-3 mb-2">
             <Calendar className="w-5 h-5 md:w-6 md:h-6" />
             <h3 className="text-lg md:text-2xl font-bold">{day.date}</h3>
           </div>
           <p className="text-base md:text-xl text-white/90">{day.title}</p>
         </div>
-        <CardContent className="p-3 md:p-6 bg-white">
+        <CardContent className="p-4 md:p-8 bg-white">
           <div className="space-y-4 md:space-y-6">
             {day.schedule.map((item, idx) => (
               <motion.div
@@ -47,8 +47,8 @@ const DaySchedule = ({ day }) => {
                 transition={{ duration: 0.3, delay: idx * 0.1 }}
                 className="group"
               >
-                <div className="flex flex-col md:flex-row gap-2 md:gap-6 p-3 md:p-4 rounded-xl transition-all duration-300 hover:bg-blue-50">
-                  <div className="md:w-32 flex-shrink-0">
+                <div className="flex flex-col md:flex-row gap-3 md:gap-8 p-4 md:p-6 rounded-xl transition-all duration-300 hover:bg-blue-50">
+                  <div className="md:w-48 flex-shrink-0">
                     <div className="flex items-center gap-2 text-blue-600">
                       <Clock className="w-4 h-4" />
                       <span className="text-sm md:text-base font-medium">{item.time}</span>
@@ -56,18 +56,18 @@ const DaySchedule = ({ day }) => {
                   </div>
                   <div className="flex-grow">
                     {item.instructor && (
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center gap-2 mb-3">
                         <Users className="w-4 h-4 text-blue-500" />
                         <span className="text-sm md:text-base font-medium text-gray-700">
                           {item.instructor}
                         </span>
                       </div>
                     )}
-                    <ul className="space-y-2">
+                    <ul className="space-y-3">
                       {item.contents.map((content, cidx) => (
                         <li
                           key={cidx}
-                          className="flex items-start gap-2 md:gap-3 text-gray-600 group-hover:text-gray-900"
+                          className="flex items-start gap-3 text-gray-600 group-hover:text-gray-900"
                         >
                           <span className="w-1.5 h-1.5 md:w-2 md:h-2 mt-2 rounded-full bg-blue-300 flex-shrink-0" />
                           <span className="text-sm md:text-base leading-relaxed">{content}</span>
@@ -90,12 +90,12 @@ export default function CurriculumPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/50 to-blue-100/50">
-      <div className="container mx-auto py-8 md:py-12 px-4">
+      <div className="container mx-auto py-8 md:py-12 px-4 md:px-8 lg:px-12 xl:px-16 max-w-[1920px]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="max-w-5xl mx-auto"
+          className="mx-auto"
         >
           <div className="text-center mb-8 md:mb-16">
             <motion.div
@@ -111,7 +111,7 @@ export default function CurriculumPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="text-base md:text-xl text-gray-600 max-w-2xl mx-auto"
+              className="text-base md:text-xl text-gray-600 max-w-4xl mx-auto"
             >
               3주간의 체계적인 교육을 통해 보험영업의 전문가로 성장합니다
             </motion.p>
@@ -128,14 +128,13 @@ export default function CurriculumPage() {
                   <TabsTrigger
                     key={week.week}
                     value={week.week}
-                    className="py-3 md:py-6 data-[state=active]:bg-blue-500 data-[state=active]:text-white transition-all duration-300"
+                    className="py-3 md:py-8 data-[state=active]:bg-blue-500 data-[state=active]:text-white transition-all duration-300"
                   >
-                    <div className="flex flex-col items-center gap-1 md:gap-2">
+                    <div className="flex flex-col items-center gap-1 md:gap-3">
                       <WeekIcon week={week.week} />
                       <div className="text-center">
-                        <div className="font-bold text-sm md:text-lg">{week.week}</div>
-                        {/* 모바일에서는 간단한 텍스트만 표시 */}
-                        <div className="hidden md:block text-sm font-normal mt-1 px-2">
+                        <div className="font-bold text-sm md:text-xl">{week.week}</div>
+                        <div className="hidden md:block text-sm md:text-base font-normal mt-1 px-2">
                           {week.title}
                         </div>
                         <div className="md:hidden text-[10px] font-normal mt-0.5 px-1">

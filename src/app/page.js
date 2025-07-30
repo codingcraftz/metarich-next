@@ -26,7 +26,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="container mx-auto text-center relative z-10 px-4 sm:px-6"
+          className="container mx-auto text-center relative z-10 px-4 md:px-8 lg:px-12 xl:px-16"
         >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -55,7 +55,7 @@ export default function Home() {
           </motion.p>
 
           <motion.div
-            className="max-w-3xl mx-auto px-4 sm:px-0"
+            className="max-w-3xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.8 }}
@@ -82,7 +82,7 @@ export default function Home() {
       </section>
 
       {/* Core Values */}
-      <section className="container mx-auto py-12 sm:py-20 px-4">
+      <section className="container mx-auto py-12 sm:py-20 px-4 md:px-8 lg:px-12 xl:px-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

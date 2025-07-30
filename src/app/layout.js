@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { MainNav } from "@/components/layout/MainNav";
+import MainNav from "@/components/layout/MainNav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +16,7 @@ export const metadata = {
     siteName: "NEXT 부트캠프",
     images: [
       {
-        url: "/og-image.png", // OG 이미지는 public 폴더에 추가 필요
+        url: "/metarich.png",
         width: 1200,
         height: 630,
         alt: "NEXT 부트캠프 - 메타리치의 미래형 성장 플랫폼",
@@ -27,18 +27,16 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/metarich.png" }, // 기본 favicon으로 metarich.png 사용
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [{ url: "/metarich.png" }], // Apple 기기용 아이콘도 동일하게 사용
   },
   manifest: "/site.webmanifest",
   twitter: {
     card: "summary_large_image",
     title: "NEXT 부트캠프 | 메타리치",
     description: "세대와 세대를 잇다, 보험의 미래를 잇다. 메타리치의 미래형 성장 플랫폼",
-    images: ["/og-image.png"],
+    images: ["/metarich.png"],
   },
   viewport: {
     width: "device-width",
