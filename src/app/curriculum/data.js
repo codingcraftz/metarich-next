@@ -20,12 +20,12 @@ export const curriculumData = [
           },
           {
             time: "13:30~16:30",
-            instructor: "옥승목 사내교수",
+            instructor: "옥승묵 사내교수",
             contents: ["신입 설계사의 마인드"],
           },
           {
             time: "16:30~18:00",
-            instructor: "",
+            instructor: "옥승묵 사내교수",
             contents: ["2025보험트렌드와 보험 설계의 기준"],
           },
         ],
@@ -46,18 +46,18 @@ export const curriculumData = [
           },
           {
             time: "14:00~15:00",
-            instructor: "",
+            instructor: "윤성환 사내강사",
             contents: ["자동차 보상과 배상"],
           },
           {
             time: "15:00~17:00",
-            instructor: "",
-            contents: ["영업의 날개를 달아줄 손은 보험금 찾기"],
+            instructor: "윤성환 사내강사",
+            contents: ["영업의 날개를 달아줄 숨은 보험금 찾기"],
           },
           {
             time: "17:00~18:00",
-            instructor: "옥승목 사내교수",
-            contents: ["깊이 되어 영업하는 방법"],
+            instructor: "옥승묵 사내교수",
+            contents: ["갑이되어 영업하는 방법"],
           },
         ],
       },
@@ -77,7 +77,7 @@ export const curriculumData = [
           },
           {
             time: "14:30~16:00",
-            instructor: "박진섭 지점장",
+            instructor: "박진심 지점장",
             contents: ["일상배상책임과 보상 사례"],
           },
           {
@@ -93,22 +93,22 @@ export const curriculumData = [
         schedule: [
           {
             time: "09:00~12:00",
-            instructor: "김은차 지점장",
+            instructor: "김은찬 지점장",
             contents: ["성공한 리더의 일대기 IV"],
           },
           {
             time: "13:00~15:00",
-            instructor: "옥승목 사내교수",
+            instructor: "옥승묵 사내교수",
             contents: ["세일즈 프로세스"],
           },
           {
             time: "15:00~16:30",
-            instructor: "",
+            instructor: "옥승묵 사내교수",
             contents: ["1차미팅 100% 클로징 화법"],
           },
           {
             time: "16:30~18:00",
-            instructor: "",
+            instructor: "옥승묵 사내교수",
             contents: ["암의 모든 것"],
           },
         ],
@@ -120,7 +120,7 @@ export const curriculumData = [
           {
             time: "09:00~12:00",
             instructor: "강성무 마스터트레이너",
-            contents: ["말로 끝고, 관계로 묶는다"],
+            contents: ["말로 끌고, 관계로 묶는다"],
           },
           {
             time: "13:00~16:30",
@@ -130,7 +130,7 @@ export const curriculumData = [
           {
             time: "16:30~18:00",
             instructor: "이효림 센터장",
-            contents: ["체험 실체 따라하는 보험영업의 루틴"],
+            contents: ["제일 쉽게 따라하는 보험영업의 루틴"],
           },
         ],
       },
@@ -157,7 +157,7 @@ export const curriculumData = [
           },
           {
             time: "14:00~16:00",
-            instructor: "",
+            instructor: "옥행정 부지점장",
             contents: ["보험가입 현황을 통한 보장분석"],
           },
           {
@@ -183,7 +183,7 @@ export const curriculumData = [
           },
           {
             time: "16:00~18:00",
-            instructor: "",
+            instructor: "원광호 지점장",
             contents: ["계약 전 알릴의무사항 및 통지의무"],
           },
         ],
@@ -220,12 +220,12 @@ export const curriculumData = [
           },
           {
             time: "13:00~16:00",
-            instructor: "",
+            instructor: "안인선 사내강사",
             contents: ["DB 미팅을 위한 TA 실전 교육"],
           },
           {
             time: "16:00~18:00",
-            instructor: "",
+            instructor: "안인선 사내강사",
             contents: ["알릴의무와 언더라이팅"],
           },
         ],
@@ -264,12 +264,12 @@ export const curriculumData = [
         schedule: [
           {
             time: "09:00~12:00",
-            instructor: "박인욱 팀장",
+            instructor: "박인옥 팀장",
             contents: ["간병보험의 이해"],
           },
           {
             time: "13:00~14:00",
-            instructor: "",
+            instructor: "박인옥 팀장",
             contents: ["고객관리 방법"],
           },
           {
@@ -290,7 +290,7 @@ export const curriculumData = [
         schedule: [
           {
             time: "09:00~12:00",
-            instructor: "박인욱 팀장",
+            instructor: "박인옥 팀장",
             contents: ["약관 해석 기초"],
           },
           {
@@ -300,7 +300,7 @@ export const curriculumData = [
           },
           {
             time: "15:00~17:00",
-            instructor: "",
+            instructor: "김유리 팀장",
             contents: ["치아보험 완전 정복"],
           },
           {
@@ -321,13 +321,13 @@ export const curriculumData = [
           },
           {
             time: "13:00~16:00",
-            instructor: "",
-            contents: ["메타존 전산 활용", "손해보험 전산 실습", "생명보험 전산 실습"],
+            instructor: "이주연 사내강사",
+            contents: ["메타온 전산 활용"],
           },
           {
             time: "16:00~18:00",
-            instructor: "",
-            contents: [],
+            instructor: "이주연 사내강사",
+            contents: ["손해보험 전산 실습", "생명보험 전산 실습"],
           },
         ],
       },
@@ -336,9 +336,34 @@ export const curriculumData = [
         title: "NEXT is NOW! NEXT부트캠프 1기 수료식",
         schedule: [
           {
-            time: "09:00~14:00",
+            time: "10:00~11:00",
+            instructor: "장이현 부장",
+            contents: ["유전자 헬스케어 DB활용법"],
+          },
+          {
+            time: "11:00~11:20",
             instructor: "",
-            contents: ["개회사", "시상식", "만찬", "폐회사"],
+            contents: ["개회사"],
+          },
+          {
+            time: "11:20~12:00",
+            instructor: "",
+            contents: ["시상식"],
+          },
+          {
+            time: "12:00~14:00",
+            instructor: "",
+            contents: ["만찬"],
+          },
+          {
+            time: "14:00~14:20",
+            instructor: "",
+            contents: ["폐회사"],
+          },
+          {
+            time: "14:20~15:00",
+            instructor: "",
+            contents: ["기념촬영"],
           },
         ],
       },

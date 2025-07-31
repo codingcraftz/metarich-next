@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { supabase } from "@/utils/supabase";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -18,7 +18,6 @@ import { QualificationGuide } from "./components/QualificationGuide";
 
 export default function ApplicationPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const supabase = createClientComponentClient();
 
   const generateSafeFileName = (originalName) => {
     const ext = originalName.split(".").pop().toLowerCase();

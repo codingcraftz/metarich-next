@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { supabase } from "@/utils/supabase";
 import Cookies from "js-cookie";
 import {
   Table,
@@ -31,7 +31,6 @@ export default function AdminDashboard() {
   const [selectedApplicant, setSelectedApplicant] = useState(null);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const router = useRouter();
-  const supabase = createClientComponentClient();
 
   useEffect(() => {
     // 로그인 상태 체크
@@ -85,14 +84,35 @@ export default function AdminDashboard() {
     router.push("/admin");
   };
 
-  const downloadFile = async (url) => {
+  const getFormattedDate = () => {
+    const now = new Date();
+    const year = now.getFullYear().toString().slice(-2);
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    return `${year}${month}${day}`;
+  };
+
+  const getFileType = (url) => {
+    if (url.includes("resume")) return "이력서";
+    if (url.includes("cover_letter")) return "자기소개서";
+    if (url.includes("recommendation")) return "추천서";
+    if (url.includes("military_certificate")) return "병적증명서";
+    return "첨부파일";
+  };
+
+  const downloadFile = async (url, applicantName) => {
     try {
       const response = await fetch(url);
       const blob = await response.blob();
       const downloadUrl = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = downloadUrl;
-      link.download = url.split("/").pop();
+
+      const date = getFormattedDate();
+      const fileType = getFileType(url);
+      const fileName = `${date}_${applicantName}_${fileType}.pdf`;
+
+      link.download = fileName;
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -162,7 +182,7 @@ export default function AdminDashboard() {
                             <Button
                               variant="outline"
                               size="sm"
-                              onClick={() => downloadFile(applicant.resume_url)}
+                              onClick={() => downloadFile(applicant.resume_url, applicant.name)}
                             >
                               <Download className="w-4 h-4 mr-1" />
                               이력서
@@ -172,7 +192,9 @@ export default function AdminDashboard() {
                             <Button
                               variant="outline"
                               size="sm"
-                              onClick={() => downloadFile(applicant.cover_letter_url)}
+                              onClick={() =>
+                                downloadFile(applicant.cover_letter_url, applicant.name)
+                              }
                             >
                               <Download className="w-4 h-4 mr-1" />
                               자소서
@@ -182,7 +204,9 @@ export default function AdminDashboard() {
                             <Button
                               variant="outline"
                               size="sm"
-                              onClick={() => downloadFile(applicant.recommendation_url)}
+                              onClick={() =>
+                                downloadFile(applicant.recommendation_url, applicant.name)
+                              }
                             >
                               <Download className="w-4 h-4 mr-1" />
                               추천서
@@ -192,7 +216,9 @@ export default function AdminDashboard() {
                             <Button
                               variant="outline"
                               size="sm"
-                              onClick={() => downloadFile(applicant.military_certificate_url)}
+                              onClick={() =>
+                                downloadFile(applicant.military_certificate_url, applicant.name)
+                              }
                             >
                               <Download className="w-4 h-4 mr-1" />
                               병적
