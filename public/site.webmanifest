@@ -2,15 +2,19 @@
   "name": "NEXT 부트캠프 | 메타리치",
   "short_name": "NEXT 부트캠프",
   "description": "세대와 세대를 잇다, 보험의 미래를 잇다. 메타리치의 미래형 성장 플랫폼",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2563eb",
   "icons": [
     {
       "src": "/metarich.png",
       "sizes": "192x192",
       "type": "image/png"
+    },
+    {
+      "src": "/metarich.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
-  ]
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
 }
