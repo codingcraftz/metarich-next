@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "node scripts/generate-favicon.js && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-favicon": "node scripts/generate-favicon.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",

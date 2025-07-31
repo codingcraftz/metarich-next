@@ -1,25 +1,21 @@
 const sharp = require("sharp");
-const fs = require("fs");
+const fs = require("fs").promises;
 const path = require("path");
 
-const inputFile = path.join(process.cwd(), "public", "metarich.png");
-const outputDir = path.join(process.cwd(), "public");
-
 async function generateFavicons() {
+  const inputFile = path.join(process.cwd(), "public", "metarich.png");
+  const sizes = [16, 32, 48, 64, 72, 96, 144, 192, 256];
+
   try {
-    // Generate favicon.ico (32x32)
-    await sharp(inputFile).resize(32, 32).toFile(path.join(outputDir, "favicon.ico"));
+    // Generate favicon.ico (multi-size)
+    await sharp(inputFile).resize(32, 32).toFile(path.join(process.cwd(), "public", "favicon.ico"));
 
-    // Generate favicon-16x16.png
-    await sharp(inputFile).resize(16, 16).toFile(path.join(outputDir, "favicon-16x16.png"));
+    // Generate apple-touch-icon
+    await sharp(inputFile)
+      .resize(180, 180)
+      .toFile(path.join(process.cwd(), "public", "apple-touch-icon.png"));
 
-    // Generate favicon-32x32.png
-    await sharp(inputFile).resize(32, 32).toFile(path.join(outputDir, "favicon-32x32.png"));
-
-    // Generate apple-touch-icon.png (180x180)
-    await sharp(inputFile).resize(180, 180).toFile(path.join(outputDir, "apple-touch-icon.png"));
-
-    console.log("Favicons generated successfully!");
+    console.log("Favicon generation completed successfully!");
   } catch (error) {
     console.error("Error generating favicons:", error);
   }

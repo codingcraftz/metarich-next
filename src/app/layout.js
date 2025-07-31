@@ -29,14 +29,11 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/metarich.png", type: "image/png" },
-      { url: "/metarich.png", sizes: "16x16", type: "image/png" },
-      { url: "/metarich.png", sizes: "32x32", type: "image/png" },
-      { url: "/metarich.png", sizes: "192x192", type: "image/png" },
-      { url: "/metarich.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/metarich.png", type: "image/png", sizes: "32x32" },
     ],
-    shortcut: [{ url: "/metarich.png" }],
-    apple: [{ url: "/metarich.png", sizes: "180x180", type: "image/png" }],
+    shortcut: ["/metarich.png"],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/site.webmanifest",
   twitter: {
@@ -59,6 +56,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/metarich.png" type="image/png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+      </head>
       <body className={inter.className}>
         <MainNav />
         <main className="pt-20 pb-24 md:pt-24 md:pb-28">{children}</main>
