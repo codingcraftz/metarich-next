@@ -28,14 +28,8 @@ export const metadata = {
     type: "website",
   },
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/metarich.png", type: "image/png", sizes: "32x32" },
-    ],
-    shortcut: ["/metarich.png"],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    icon: "/metarich.png",
   },
-  manifest: "/site.webmanifest",
   twitter: {
     card: "summary_large_image",
     title: "NEXT 부트캠프 | 메타리치",
@@ -56,11 +50,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/metarich.png" type="image/png" sizes="32x32" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
-      </head>
+      <head />
       <body className={inter.className}>
         <MainNav />
         <main className="pt-20 pb-24 md:pt-24 md:pb-28">{children}</main>

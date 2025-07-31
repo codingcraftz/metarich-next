@@ -7,6 +7,7 @@ import {
   GENDER_MAPPING,
   MILITARY_STATUS_MAPPING,
   APPLICATION_ROUTE_MAPPING,
+  INSURANCE_CERTIFICATES_MAPPING,
 } from "@/constants/mappings";
 
 export function ApplicantDetailModal({ applicant, open, onOpenChange, onDownload }) {
@@ -64,7 +65,9 @@ export function ApplicantDetailModal({ applicant, open, onOpenChange, onDownload
               </div>
               <div>
                 <p className="text-sm font-medium text-gray-500">보유자격증</p>
-                <p className="text-base mt-1">{applicant.insurance_certificates || "없음"}</p>
+                <p className="text-base mt-1">
+                  {INSURANCE_CERTIFICATES_MAPPING[applicant.insurance_certificates] || "없음"}
+                </p>
               </div>
               <div>
                 <p className="text-sm font-medium text-gray-500">보험영업 경력</p>

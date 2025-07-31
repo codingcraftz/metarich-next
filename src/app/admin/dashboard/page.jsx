@@ -21,8 +21,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Download, LogOut } from "lucide-react";
+import { Download, LogOut, Trash2 } from "lucide-react";
 import { ApplicantDetailModal } from "./components/ApplicantDetailModal";
+import { DeleteConfirmDialog } from "./components/DeleteConfirmDialog";
 
 export default function AdminDashboard() {
   const [applicants, setApplicants] = useState([]);
@@ -30,6 +31,8 @@ export default function AdminDashboard() {
   const [statusFilter, setStatusFilter] = useState("all");
   const [selectedApplicant, setSelectedApplicant] = useState(null);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const [applicantToDelete, setApplicantToDelete] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -126,6 +129,57 @@ export default function AdminDashboard() {
   const handleDetailClick = (applicant) => {
     setSelectedApplicant(applicant);
     setIsDetailModalOpen(true);
+  };
+
+  const handleDeleteClick = (applicant) => {
+    setApplicantToDelete(applicant);
+    setIsDeleteDialogOpen(true);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (!applicantToDelete) return;
+
+    try {
+      console.log("Deleting applicant:", applicantToDelete.id);
+
+      // 지원자 정보 삭제
+      const { error: deleteError } = await supabase
+        .from("applicants")
+        .delete()
+        .eq("id", applicantToDelete.id);
+
+      if (deleteError) {
+        console.error("Delete error:", deleteError);
+        throw deleteError;
+      }
+
+      // 삭제가 성공하면 관련 파일들도 삭제
+      const fileUrls = [
+        applicantToDelete.resume_url,
+        applicantToDelete.cover_letter_url,
+        applicantToDelete.recommendation_url,
+        applicantToDelete.military_certificate_url,
+      ].filter(Boolean);
+
+      for (const url of fileUrls) {
+        const { error: storageError } = await supabase.storage
+          .from("application-files")
+          .remove([url]);
+
+        if (storageError) {
+          console.warn("Failed to delete file:", url, storageError);
+        }
+      }
+
+      // 목록 새로고침
+      await fetchApplicants();
+      setIsDeleteDialogOpen(false);
+      setApplicantToDelete(null);
+      alert("지원자 정보가 삭제되었습니다.");
+    } catch (error) {
+      console.error("Error deleting applicant:", error);
+      alert(`삭제 중 오류가 발생했습니다: ${error.message || "알 수 없는 오류"}`);
+    }
   };
 
   return (
@@ -243,9 +297,19 @@ export default function AdminDashboard() {
                       </TableCell>
                       <TableCell>{new Date(applicant.created_at).toLocaleDateString()}</TableCell>
                       <TableCell>
-                        <Button variant="link" onClick={() => handleDetailClick(applicant)}>
-                          상세보기
-                        </Button>
+                        <div className="flex gap-2">
+                          <Button variant="link" onClick={() => handleDetailClick(applicant)}>
+                            상세보기
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="text-red-600 hover:text-red-700 hover:bg-red-100"
+                            onClick={() => handleDeleteClick(applicant)}
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </div>
                       </TableCell>
                     </TableRow>
                   ))}
@@ -261,6 +325,13 @@ export default function AdminDashboard() {
         open={isDetailModalOpen}
         onOpenChange={setIsDetailModalOpen}
         onDownload={downloadFile}
+      />
+
+      <DeleteConfirmDialog
+        open={isDeleteDialogOpen}
+        onOpenChange={setIsDeleteDialogOpen}
+        onConfirm={handleDeleteConfirm}
+        applicantName={applicantToDelete?.name}
       />
     </div>
   );
