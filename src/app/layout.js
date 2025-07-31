@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import MainNav from "@/components/layout/MainNav";
 import Footer from "@/components/layout/Footer";
+import KakaoButton from "@/components/layout/KakaoButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -61,6 +62,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <MainNav />
         <main className="pt-20 pb-24 md:pt-24 md:pb-28">{children}</main>
+        <KakaoButton />
         <Footer />
       </body>
     </html>
