@@ -13,7 +13,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-blue-600/90 to-blue-700/90 backdrop-blur-sm text-white py-4 md:py-5 z-40">
+    <footer className="relative md:fixed md:bottom-0 md:left-0 md:right-0 bg-gradient-to-r from-blue-600/90 to-blue-700/90 backdrop-blur-sm text-white py-3 md:py-5 z-40">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-center items-center gap-5 md:gap-12 text-center">
           <motion.div animate={pulseAnimation} className="flex items-center gap-3">

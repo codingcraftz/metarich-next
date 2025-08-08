@@ -8,7 +8,7 @@ export default function KakaoButton() {
       href="http://pf.kakao.com/_Bmixen"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed right-4 md:right-8 bottom-32 md:bottom-36 z-50 cursor-pointer"
+      className="fixed right-4 md:right-8 bottom-24 md:bottom-36 z-50 cursor-pointer"
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       whileHover={{ scale: 1.1 }}

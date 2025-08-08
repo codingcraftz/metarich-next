@@ -143,7 +143,7 @@ export default function ApplicationPage() {
   };
 
   return (
-    <div className="container mx-auto py-8 pb-32 md:pb-40">
+    <div className="container mx-auto py-8 pb-4 md:pb-36">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
