@@ -32,7 +32,9 @@ export default function ApplicationPage() {
 
   const methods = useForm({
     resolver: zodResolver(formSchema),
-    mode: "onChange",
+    mode: "onSubmit",
+    reValidateMode: "onChange",
+    shouldFocusError: true,
     defaultValues: {
       name: "",
       birthDate: "",
@@ -42,16 +44,19 @@ export default function ApplicationPage() {
       email: "",
       address: "",
       applicationRoute: "",
-      insurance_certificates: "none",
-      qualifications: { age: false, credit: false },
-      insurance_experience: 0,
-      referral_manager_branch: "",
-      referral_manager_name: "",
-      referral_manager_position: "",
-      referral_manager_phone: "",
-      referral_person_name: "",
-      referral_person_position: "",
-      referral_person_phone: "",
+      insuranceCertificates: undefined,
+      qualifications: {
+        age: false,
+        credit: false,
+      },
+      insuranceExperience: "",
+      referralManagerBranch: "",
+      referralManagerName: "",
+      referralManagerPosition: "",
+      referralManagerPhone: "",
+      referralPersonName: "",
+      referralPersonPosition: "",
+      referralPersonPhone: "",
       resume: null,
       coverLetter: null,
       recommendation: null,
@@ -138,7 +143,7 @@ export default function ApplicationPage() {
   };
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 pb-32 md:pb-40">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -165,11 +170,7 @@ export default function ApplicationPage() {
             <PrivacySection />
 
             <div className="flex flex-col items-end space-y-4">
-              <Button
-                type="submit"
-                className="w-full md:w-auto"
-                disabled={isSubmitting || !methods.formState.isValid}
-              >
+              <Button type="submit" className="w-full md:w-auto" disabled={isSubmitting}>
                 {isSubmitting ? "제출 중..." : "지원서 제출"}
               </Button>
             </div>

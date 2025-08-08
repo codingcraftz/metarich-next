@@ -71,7 +71,7 @@ export function BasicInfoSection() {
                     성별<span className="text-red-500 ml-0.5">*</span>
                   </span>
                 </FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select onValueChange={field.onChange} value={field.value}>
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="성별을 선택해주세요" />
@@ -97,7 +97,7 @@ export function BasicInfoSection() {
                     병역사항<span className="text-red-500 ml-0.5">*</span>
                   </span>
                 </FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select onValueChange={field.onChange} value={field.value}>
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="병역사항을 선택해주세요" />
@@ -179,7 +179,7 @@ export function BasicInfoSection() {
                     신청경로<span className="text-red-500 ml-0.5">*</span>
                   </span>
                 </FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select onValueChange={field.onChange} value={field.value}>
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="신청경로를 선택해주세요" />
@@ -208,7 +208,7 @@ export function BasicInfoSection() {
                 <FormLabel>
                   <span className="inline-flex items-center">보유자격증</span>
                 </FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select onValueChange={field.onChange} value={field.value}>
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="보유자격증을 선택해주세요" />

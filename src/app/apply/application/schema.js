@@ -39,10 +39,10 @@ export const formSchema = z.object({
 
   // 자격 사항
   qualifications: z.object({
-    age: z.boolean(),
-    credit: z.boolean(),
+    age: z.boolean().refine((val) => val === true, "연령 자격요건에 동의해주세요"),
+    credit: z.boolean().refine((val) => val === true, "신용상 결격사유 없음에 동의해주세요"),
   }),
-  insuranceExperience: z.string().optional(),
+  insuranceExperience: z.string().min(1, "보험영업 경력을 입력해주세요"),
 
   // 추천인 정보 (선택사항)
   referralManagerBranch: z.string().optional(),

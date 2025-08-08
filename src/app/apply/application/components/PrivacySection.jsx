@@ -3,9 +3,10 @@
 import { useFormContext } from "react-hook-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 
 export function PrivacySection() {
-  const { register } = useFormContext();
+  const { control } = useFormContext();
 
   return (
     <Card>
@@ -26,15 +27,23 @@ export function PrivacySection() {
               4. 동의를 거부할 권리가 있으며, 거부 시 부트캠프 지원이 제한될 수 있습니다.
             </p>
           </div>
-          <div className="flex items-start space-x-2">
-            <Checkbox id="privacyAgreement" {...register("privacyAgreement")} />
-            <label
-              htmlFor="privacyAgreement"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              위 개인정보 수집 및 이용에 동의합니다.
-            </label>
-          </div>
+          <FormField
+            control={control}
+            name="privacyAgreement"
+            render={({ field }) => (
+              <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                <FormControl>
+                  <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                </FormControl>
+                <div className="space-y-1 leading-none">
+                  <FormLabel className="text-sm font-medium">
+                    위 개인정보 수집 및 이용에 동의합니다. <span className="text-red-500">*</span>
+                  </FormLabel>
+                </div>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
       </CardContent>
     </Card>

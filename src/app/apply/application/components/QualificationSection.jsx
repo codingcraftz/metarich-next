@@ -4,6 +4,7 @@ import { useFormContext } from "react-hook-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
+import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Info } from "lucide-react";
 
 export function QualificationSection() {
@@ -34,18 +35,22 @@ export function QualificationSection() {
 
         <div className="space-y-4">
           {qualificationItems.map((item) => (
-            <div key={item.id} className="flex items-start space-x-2">
-              <Checkbox
-                id={`qualifications.${item.id}`}
-                {...register(`qualifications.${item.id}`)}
-              />
-              <label
-                htmlFor={`qualifications.${item.id}`}
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              >
-                {item.label}
-              </label>
-            </div>
+            <FormField
+              key={item.id}
+              control={control}
+              name={`qualifications.${item.id}`}
+              render={({ field }) => (
+                <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                  <FormControl>
+                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                  </FormControl>
+                  <div className="space-y-1 leading-none">
+                    <FormLabel className="text-sm font-medium">{item.label}</FormLabel>
+                  </div>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           ))}
         </div>
 
@@ -57,7 +62,7 @@ export function QualificationSection() {
           <div className="flex items-center gap-2">
             <Input
               type="number"
-              {...register("insurance_experience")}
+              {...register("insuranceExperience")}
               min="0"
               max="6"
               className="w-full"
