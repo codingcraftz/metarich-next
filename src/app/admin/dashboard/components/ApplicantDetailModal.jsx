@@ -129,28 +129,61 @@ export function ApplicantDetailModal({ applicant, open, onOpenChange, onDownload
           <div className="space-y-4">
             <h3 className="text-xl font-semibold border-b pb-2">제출 서류</h3>
             <div className="flex flex-wrap gap-3">
-              {applicant.resume_url && (
-                <Button variant="outline" onClick={() => onDownload(applicant.resume_url)}>
+              {(applicant.resume_url || applicant.resumeUrl) && (
+                <Button
+                  variant="outline"
+                  onClick={() =>
+                    onDownload(
+                      applicant.resume_url || applicant.resumeUrl,
+                      applicant.name,
+                      "이력서"
+                    )
+                  }
+                >
                   <Download className="w-4 h-4 mr-2" />
                   이력서
                 </Button>
               )}
-              {applicant.cover_letter_url && (
-                <Button variant="outline" onClick={() => onDownload(applicant.cover_letter_url)}>
+              {(applicant.cover_letter_url || applicant.coverLetter_url) && (
+                <Button
+                  variant="outline"
+                  onClick={() =>
+                    onDownload(
+                      applicant.cover_letter_url || applicant.coverLetter_url,
+                      applicant.name,
+                      "자기소개서"
+                    )
+                  }
+                >
                   <Download className="w-4 h-4 mr-2" />
                   자기소개서
                 </Button>
               )}
-              {applicant.recommendation_url && (
-                <Button variant="outline" onClick={() => onDownload(applicant.recommendation_url)}>
+              {(applicant.recommendation_url || applicant.recommendationUrl) && (
+                <Button
+                  variant="outline"
+                  onClick={() =>
+                    onDownload(
+                      applicant.recommendation_url || applicant.recommendationUrl,
+                      applicant.name,
+                      "추천서"
+                    )
+                  }
+                >
                   <Download className="w-4 h-4 mr-2" />
                   추천서
                 </Button>
               )}
-              {applicant.military_certificate_url && (
+              {(applicant.military_certificate_url || applicant.militaryCertificate_url) && (
                 <Button
                   variant="outline"
-                  onClick={() => onDownload(applicant.military_certificate_url)}
+                  onClick={() =>
+                    onDownload(
+                      applicant.military_certificate_url || applicant.militaryCertificate_url,
+                      applicant.name,
+                      "병적증명서"
+                    )
+                  }
                 >
                   <Download className="w-4 h-4 mr-2" />
                   병적증명서

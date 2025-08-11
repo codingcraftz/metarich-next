@@ -95,25 +95,18 @@ export default function AdminDashboard() {
     return `${year}${month}${day}`;
   };
 
-  const getFileType = (url) => {
-    if (url.includes("resume")) return "이력서";
-    if (url.includes("cover_letter")) return "자기소개서";
-    if (url.includes("recommendation")) return "추천서";
-    if (url.includes("military_certificate")) return "병적증명서";
-    return "첨부파일";
-  };
-
-  const downloadFile = async (url, applicantName) => {
+  const downloadFile = async (filePath, applicantName, fileTypeLabel = "첨부파일") => {
     try {
-      const response = await fetch(url);
-      const blob = await response.blob();
-      const downloadUrl = window.URL.createObjectURL(blob);
+      const { data, error } = await supabase.storage.from("application-files").download(filePath);
+
+      if (error) throw error;
+
+      const downloadUrl = window.URL.createObjectURL(data);
       const link = document.createElement("a");
       link.href = downloadUrl;
 
       const date = getFormattedDate();
-      const fileType = getFileType(url);
-      const fileName = `${date}_${applicantName}_${fileType}.pdf`;
+      const fileName = `${date}_${applicantName}_${fileTypeLabel}.pdf`;
 
       link.download = fileName;
       document.body.appendChild(link);
@@ -232,46 +225,66 @@ export default function AdminDashboard() {
                       <TableCell>{applicant.email}</TableCell>
                       <TableCell>
                         <div className="flex flex-wrap gap-2">
-                          {applicant.resume_url && (
+                          {(applicant.resume_url || applicant.resumeUrl) && (
                             <Button
                               variant="outline"
                               size="sm"
-                              onClick={() => downloadFile(applicant.resume_url, applicant.name)}
+                              onClick={() =>
+                                downloadFile(
+                                  applicant.resume_url || applicant.resumeUrl,
+                                  applicant.name,
+                                  "이력서"
+                                )
+                              }
                             >
                               <Download className="w-4 h-4 mr-1" />
                               이력서
                             </Button>
                           )}
-                          {applicant.cover_letter_url && (
+                          {(applicant.cover_letter_url || applicant.coverLetter_url) && (
                             <Button
                               variant="outline"
                               size="sm"
                               onClick={() =>
-                                downloadFile(applicant.cover_letter_url, applicant.name)
+                                downloadFile(
+                                  applicant.cover_letter_url || applicant.coverLetter_url,
+                                  applicant.name,
+                                  "자소서"
+                                )
                               }
                             >
                               <Download className="w-4 h-4 mr-1" />
                               자소서
                             </Button>
                           )}
-                          {applicant.recommendation_url && (
+                          {(applicant.recommendation_url || applicant.recommendationUrl) && (
                             <Button
                               variant="outline"
                               size="sm"
                               onClick={() =>
-                                downloadFile(applicant.recommendation_url, applicant.name)
+                                downloadFile(
+                                  applicant.recommendation_url || applicant.recommendationUrl,
+                                  applicant.name,
+                                  "추천서"
+                                )
                               }
                             >
                               <Download className="w-4 h-4 mr-1" />
                               추천서
                             </Button>
                           )}
-                          {applicant.military_certificate_url && (
+                          {(applicant.military_certificate_url ||
+                            applicant.militaryCertificate_url) && (
                             <Button
                               variant="outline"
                               size="sm"
                               onClick={() =>
-                                downloadFile(applicant.military_certificate_url, applicant.name)
+                                downloadFile(
+                                  applicant.military_certificate_url ||
+                                    applicant.militaryCertificate_url,
+                                  applicant.name,
+                                  "병적증명서"
+                                )
                               }
                             >
                               <Download className="w-4 h-4 mr-1" />

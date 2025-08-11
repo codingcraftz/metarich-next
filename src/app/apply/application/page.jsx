@@ -76,6 +76,14 @@ export default function ApplicationPage() {
         militaryCertificate: data.militaryCertificate,
       };
 
+      // 업로드 키를 DB 컬럼명으로 매핑
+      const keyToDbColumn = {
+        resume: "resume_url",
+        coverLetter: "cover_letter_url",
+        recommendation: "recommendation_url",
+        militaryCertificate: "military_certificate_url",
+      };
+
       const folderName = generateSafeFolderName(data.email);
 
       for (const [key, file] of Object.entries(filesToUpload)) {
@@ -94,7 +102,10 @@ export default function ApplicationPage() {
             });
 
           if (uploadError) throw uploadError;
-          fileUrls[`${key}_url`] = filePath;
+          const dbColumn = keyToDbColumn[key];
+          if (dbColumn) {
+            fileUrls[dbColumn] = filePath;
+          }
         }
       }
 
