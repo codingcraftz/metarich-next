@@ -19,13 +19,13 @@ export default function Footer() {
           <motion.div animate={pulseAnimation} className="flex items-center gap-3">
             <span className="text-lg md:text-xl font-bold">1기 접수시작</span>
             <span className="bg-white/20 px-4 py-2 rounded-full text-base md:text-lg font-medium">
-              2024년 08월 01일
+              2025년 08월 01일
             </span>
           </motion.div>
           <motion.div animate={pulseAnimation} className="flex items-center gap-3">
             <span className="text-lg md:text-xl font-bold">1기 접수마감</span>
             <span className="bg-white/20 px-4 py-2 rounded-full text-base md:text-lg font-medium">
-              2024년 08월 29일
+              2025년 08월 29일
             </span>
           </motion.div>
         </div>
